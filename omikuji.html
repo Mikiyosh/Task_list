@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="ja">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>おみくじ</title>
+  <link rel="stylesheet" href="./css/sample.css">
+</head>
+
+<body>
+  <header>
+    <h1>おみくじ</h1>
+  </header>
+
+  <main>
+    <ul>
+      <li id="pull">おみくじを引く</li>
+    </ul>
+    <p id="echo">結果は？</p>
+    <div id="history">
+      <p>履歴が表示されます</p>
+    </div>
+  </main>
+
+  <footer>フッター</footer>
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+  <script>
+
+
+    const array = [60, 61, 62, 63];
+    const class01 = {
+      number: 1,
+      title: "HTML",
+      description: "HTMLの役割",
+      time: 90,
+
+    };
+    console.log(class01.title);
+
+
+    const history = [];
+
+    $('#pull').on('click', function () {
+      const omikuji = ['大吉', '中吉', '小吉', '凶', '大凶'];
+      const random = Math.floor(Math.random() * omikuji.length);
+      const result = omikuji[random];
+      $('#echo').text(result);
+      history.unshift(result);
+      console.log(history);
+      const historyElements = [];
+      for (let i = 0; i < history.length; i++) {
+        historyElements.push('<p>' + history[i] + '</p>');
+      }
+      console.log(historyElements);
+      $('#history').html(historyElements);
+    });
+
+  </script>
+
+</body>
+
+</html>
