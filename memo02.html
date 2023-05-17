@@ -5,59 +5,535 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta http-equiv="X-UA-Compatible" content="ie=edge">
+
   <title>myMemoPad中級</title>
   <link rel="stylesheet" href="css/sample.css">
+
 </head>
 
 <body>
-  <header>
-    <h1>MemoPad中級編</h1>
-  </header>
-
   <main>
-    <input type="text" id="input">
-    <textarea id="text_area"></textarea>
-    <ul>
-      <li id="save">Save</li>
-      <li id="clear">Clear</li>
-    </ul>
+    <div>
+      <h1 class="title">タスク管理シート</h1>
+
+
+
+
+      <a href="https://d10000000kvyqea4.lightning.force.com/lightning/page/home" target="_blank"
+        style="text-decoration: none;">
+        <img src="img/sf.png" alt="セールスフォース" width="60" height="100%" style="margin-bottom: 10px;">
+      </a>
+      <a href="https://calendar.google.com/calendar/u/0/r" target="_blank"
+        style="text-decoration: none; margin: 0 0 0 5px;">
+        <img src="img/cal.png" alt="カレンダー" width="60" height="100%">
+      </a>
+
+      <a href="https://mail.google.com/mail/u/0/#inbox" target="_blank" style="text-decoration: none;">
+        <img src="img/gmail.png" alt="ジーメール" width="55" height="100%" style="margin: 0 0 10px 7px;">
+      </a>
+
+      <a href="https://talk.worksmobile.com/#/" target="_blank" style="text-decoration: none;">
+        <img src="img/lw.png" alt="オープン" width="63" height="100%" style="margin: 0 2px 0 9px;">
+      </a>
+
+      <a href="https://openai.com/blog/chatgpt" target="_blank" style="text-decoration: none;">
+        <img src="img/open.png" alt="オープン" width="50" height="100%" style="margin: 0 0 5px 3px;">
+      </a>
+
+
+      <a href="./omikuji.html" target="_blank">
+        <img src="img/news.png" alt="ジーメール" width="55" height="100%" style="margin: 0 0 10px 15px;">
+      </a>
+
+
+      <div class="headermain">
+        <div class="forinput">
+          <p class="taskinput">タスク入力用</p>
+
+          <div class="taskwrapper">
+            <p class="taskin">①タスク種別</p>
+            <div class="selectstars">
+              <select id="companySelect">
+                <option value="A">A社</option>
+                <option value="B">B社</option>
+                <option value="C">C社</option>
+                <option value="D">D社</option>
+                <option value="E">E社</option>
+                <option value="F">その他</option>
+              </select>
+
+              <select id="eme">
+                <option value="zero">緊急度：☆☆☆</option>
+                <option value="one">緊急度：★☆☆</option>
+                <option value="two">緊急度：★★☆</option>
+                <option value="three">緊急度：★★★</option>
+              </select>
+
+              <select id="imp">
+                <option value="zero2">重要度：☆☆☆</option>
+                <option value="one2">重要度：★☆☆</option>
+                <option value="two2">重要度：★★☆</option>
+                <option value="three2">重要度：★★★</option>
+              </select>
+            </div>
+          </div>
+
+          <div>
+            <p class=taskin>②タスク概要</p>
+            <textarea id="memoTextarea" placeholder="メモを入力してください" class="postit1"></textarea>
+          </div>
+
+          <div>
+            <p class="taskin">③タスク詳細</p>
+            <textarea id="memo2Textarea" placeholder="メモを入力してください" class="postit2"></textarea>
+          </div>
+
+
+          <div>
+            <div>
+              <p class="taskin">④納期</p>
+              <input type="text" id="datepicker" placeholder="日付を選択してください">
+              <div class="details"><button id="deleteButton">削除</button></div>
+            </div>
+
+
+            <div class="details">
+              <p id="selected-date"></p>
+            </div>
+
+          </div>
+
+        </div>
+
+
+        <div class="forinput">
+          <p class="taskinput">タスク抽出用</p>
+
+          <p class="taskin">①タスク種別</p>
+
+          <div class="details">
+            <select id="companySelectFilter">
+              <option value="ALL">ALL</option>
+              <option value="A">A社</option>
+              <option value="B">B社</option>
+              <option value="C">C社</option>
+              <option value="D">D社</option>
+              <option value="E">E社</option>
+              <option value="F">その他</option>
+            </select>
+
+            <select id="emeFilter">
+              <option value="ALL2">ALL</option>
+              <option value="zero">緊急度：☆☆☆</option>
+              <option value="one">緊急度：★☆☆</option>
+              <option value="two">緊急度：★★☆</option>
+              <option value="three">緊急度：★★★</option>
+            </select>
+
+            <select id="impFilter">
+              <option value="ALL3">ALL</option>
+              <option value="zero2">重要度：☆☆☆</option>
+              <option value="one2">重要度：★☆☆</option>
+              <option value="two2">重要度：★★☆</option>
+              <option value="three2">重要度：★★★</option>
+            </select>
+            <div></div>
+          </div>
+
+          <input type="text" id="searchInput" placeholder="検索キーワードを入力してください">
+
+          <div class="details">
+            <button id="searchButton">検索</button>
+            <button id="delete2Button">削除</button>
+            <div id="resultContainer"></div>
+          </div>
+
+
+          <P class="taskin">②納期別タスク一覧</P>
+
+          <div id="resultContainer"></div>
+
+          <div class="details">
+            <select id="dateSelect">
+              <option id="resultContainer2plus" value="resultContainer2plus">日付を選択してください</option>
+            </select>
+            <div id="resultContainer2"></div>
+
+
+            <button id="delete3Button">削除</button>
+
+            <div class="allde">
+              <button id="deletecom">全てのデータを削除</button>
+            </div>
+          </div>
+
+
+        </div>
+
+
+
+      </div>
+
+
+
+    </div>
   </main>
 
   <footer>
-    <small>G's</small>
+    <small>Finish your work! and spare your time for G's</small>
   </footer>
+
+
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+  <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/jqueryui/1.12.1/jquery-ui.min.css">
+  <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+  <script src="https://code.jquery.com/ui/1.13.0/jquery-ui.min.js"></script>
+
   <script>
 
-    const data = {
-      title: "タイトル",
-      text: "テキスト",
-    };
 
-    console.log(data);
-    const json = JSON.stringify(data);
-    console.log(json);
-    localStorage.setItem('memo', json)
+    // メモデータを保持する配列
+    $(document).ready(function () {
+      let memos = [];
 
-    $('#clear').on('click', function () {
-      localStorage.removeItem('memo');
-      $('#text_area').val('');
+      // ページ読み込み時にローカルストレージからメモを取得
+      if (localStorage.getItem("memos")) {
+        memos = JSON.parse(localStorage.getItem("memos"));
+      }
+
+      // カレンダーを初期化
+      $("#datepicker").datepicker({
+        onSelect: function (dateText) {
+          recordDate(dateText);
+        }
+      });
+
+      // 日付とメモを記録する関数
+      function recordDate(date) {
+        // 選択された日付を取得
+        const selectedDate = new Date(date);
+
+        // メモの内容を取得
+        let memo = document.getElementById("memoTextarea").value; // テキストエリアの値を取得
+        let memo2 = document.getElementById("memo2Textarea").value; // メモ2の値を取得
+        let company = document.getElementById("companySelect").value; // 選択された会社を取得
+        if (!company) {
+          company = document.getElementById("customCompany").value;
+        }
+        let eme = document.getElementById("eme").value; // 選択された緊急度を取得
+        let imp = document.getElementById("imp").value; // 選択された重要度を取得
+
+
+
+
+        // 日付とメモを統合してオブジェクトを作成
+        var memoData = {
+          date: selectedDate,
+          company: company,
+          memo: memo,
+          memo2: memo2,
+          eme: eme,
+          imp: imp
+        };
+
+        // メモを配列に追加
+        memos.push(memoData);
+
+        // メモの記録を更新
+        localStorage.setItem("memos", JSON.stringify(memos));
+
+        alert("メモが保存されました");
+      }
+
+      // 保存ボタンのクリックイベント
+      $('#saveButton').on('click', function () {
+        recordDate($("#datepicker").val());
+      });
     });
 
-    if (localStorage.getItem('memo')) {
-      const json = localStorage.getItem('memo');
-      console.log(json);
-      const data = JSON.parse(json);
-      console.log(data);
-
-      $('#input').val(data.title);
-      $('#text_area').val(data.text);
 
 
+    // 削除の表示
+
+    $('#deleteButton').on('click', function () {
+      // メモの一覧を非表示にする
+      $('#datepicker').empty();
+
+      // 検索キーワード入力欄を非表示にする
+      $('#datepicker').val('');
+
+      // ページをリロードする
+      window.location.reload();
+    });
+
+
+
+
+    // 検索結果の表示
+
+    $(document).ready(function () {
+      $('#searchButton').on('click', function () {
+        let searchKeyword = $('#searchInput').val(); // 検索キーワードを取得
+        let selectedCompany = $('#companySelectFilter').val(); // 選択された会社を取得
+        let selectedEme = $('#emeFilter').val(); // 選択された緊急度を取得
+        let selectedImp = $('#impFilter').val(); // 選択された重要度を取得
+
+        var memos = localStorage.getItem('memos'); // メモの記録を取得
+        var resultContainer = $('#resultContainer');
+        resultContainer.empty(); // 結果コンテナを初期化
+
+        if (memos) {
+          memos = JSON.parse(memos); // JSON 形式の文字列を JavaScript オブジェクトに変換
+          var matchingMemos = memos.filter(function (memo) {
+            return (
+              (memo.memo && memo.memo.includes(searchKeyword)) || // memo.memoが存在し、検索キーワードが含まれるか
+              (memo.memo2 && memo.memo2.includes(searchKeyword)) // memo.memo2が存在し、検索キーワードが含まれるか
+            ) && (
+                (selectedCompany === 'ALL' || memo.company === selectedCompany) &&
+                (selectedEme === 'ALL2' || memo.eme === selectedEme) &&
+                (selectedImp === 'ALL3' || memo.imp === selectedImp)
+              );
+          });
+
+          if (matchingMemos.length > 0) {
+            matchingMemos.forEach(function (memo) {
+              var memoItem = $('<p>').html('日付: ' + formatDate(memo.date) + '<br>会社: ' + memo.company + '<br>概要: ' + memo.memo + '<br>詳細: ' + memo.memo2);
+              resultContainer.append(memoItem);
+            });
+          } else {
+            var noResultMessage = $('<p>').text('一致するメモはありません');
+            resultContainer.append(noResultMessage);
+          }
+        } else {
+          var noMemoMessage = $('<p>').text('メモはありません');
+          resultContainer.append(noMemoMessage);
+        }
+      });
+
+
+      $(document).ready(function () {
+        // ページが読み込まれた時に日付の一覧を表示する
+        displayDateList();
+
+        // 日付リスト表示ボタンがクリックされた時の処理
+        $('#dateListButton').on('click', function () {
+          displayDateList();
+        });
+
+        // 日付が選択された時の処理
+        $('#dateSelect').on('change', function () {
+          let selectedDate = $('#dateSelect').val();
+          let memos = JSON.parse(localStorage.getItem('memos'));
+
+          var resultContainer2 = $('#resultContainer2');
+          resultContainer2.empty();
+
+          memos.forEach(function (memo) {
+            if (formatDate(memo.date) === selectedDate) {
+              var memoItem = $('<p>').html('日付: ' + formatDate(memo.date) + '<br>企業名: ' + memo.company + '<br>概要: ' + memo.memo + '<br>詳細: ' + memo.memo2);
+              resultContainer2.append(memoItem);
+            }
+          });
+        });
+      });
+
+      // 日付の一覧を表示する
+      function displayDateList() {
+        let memos = JSON.parse(localStorage.getItem('memos'));
+        let dateList = [];
+
+        if (memos) {
+          // メモに含まれる日付を取得する
+          memos.forEach(function (memo) {
+            let dateStr = formatDate(memo.date);
+            let dateObj = new Date(memo.date); // 日付をDateオブジェクトに変換する
+            if (!isNaN(dateObj.getTime()) && dateList.indexOf(dateStr) === -1) {
+              // 日付が有効であり、一覧に含まれていない場合のみ追加する
+              dateList.push(dateStr);
+            }
+          });
+        }
+
+        // 日付の一覧を作成する
+        let dateSelect = $('#dateSelect');
+        dateSelect.empty();
+        dateSelect.append($('<option>').val('').text('日付を選択してください'));
+        dateList.forEach(function (date) {
+          dateSelect.append($('<option>').val(date).text(date));
+        });
+      }
+
+
+
+
+
+
+      $('#delete2Button').on('click', function () {
+        // メモの一覧を非表示にする
+        $('#resultContainer').empty();
+
+        // 検索キーワード入力欄を非表示にする
+        $('#searchInput').val('');
+
+        // ページをリロードする
+        window.location.reload();
+      });
+
+
+      if (localStorage.getItem('memos')) {
+        const json = localStorage.getItem('memos');
+        console.log(json);
+        const data = JSON.parse(json);
+        console.log(data);
+        displayMemos();
+
+
+
+        // メモの一覧を表示
+
+      } else {
+
+        // メモの一覧を空にして非表示にする
+        $('#resultContainer').empty().text(''); // 内容を空にする
+
+        // 検索キーワード入力欄を空にして非表示にする
+        $('#searchInput').val('').text(''); // 内容を空にする
+      }
+
+      $('#deletecom').on('click', function () {
+        localStorage.clear(); // すべてのストレージデータを削除
+        $('#resultContainer').empty(); // resultContainerを空にする
+
+      });
+
+
+
+
+
+
+
+
+      $('#delete3Button').on('click', function () {
+        // メモの一覧を非表示にする
+        $('#resultContainer2').empty();
+
+        // 検索キーワード入力欄を初期値に戻す
+        $('#resultContainer2plus').prop('selected', true);
+
+        if (localStorage.getItem('memos')) {
+          const json = localStorage.getItem('memos');
+          console.log(json);
+          const data = JSON.parse(json);
+          console.log(data);
+          displayMemos();
+
+          // メモの一覧を表示
+
+        } else {
+          // メモの一覧を空にして非表示にする
+          $('#resultContainer2').empty().text('');
+
+          // 検索キーワード入力欄を空にして非表示にする
+          $('#resultContainer2plus').prop('selected', true);
+        }
+
+        // 2秒後にページをリロードする
+        setTimeout(function () {
+          location.reload();
+        }, 10);
+      });
+
+      $('#deletecom').on('click', function () {
+        localStorage.clear(); // すべてのストレージデータを削除
+        $('#resultContainer').empty(); // resultContainerを空にする
+        $('#resultContainer2').empty(); // resultContainerを空にする
+        $('#resultContainer2plus').prop('selected', true);
+
+        // 2秒後にページをリロードする
+        setTimeout(function () {
+          location.reload();
+        }, 10);
+      });
+
+
+
+      // カレンダーを初期化
+      $("#datepicker").datepicker({
+        onSelect: function (dateText) {
+          recordDate(dateText);
+        }
+      });
+    });
+
+    // 日付を記録する関数
+    function recordDate(date) {
+      // 選択された日付を取得
+      const selectedDate = new Date(date);
+
+      // 日付をJSON形式で記録
+      const dateData = { "date": selectedDate.getTime() };
+      const jsonData = JSON.stringify(dateData);
+
+      // JSONデータを出力（例：コンソールに出力）
+      console.log(jsonData);
+      memos.push(dateData); // メモを配列に追加
+      localStorage.setItem("memos", JSON.stringify(memos)); // メモの記録を更新
+    }
+
+    // 日付をフォーマットする関数
+    function formatDate(dateString) {
+      const date = new Date(dateString);
+      if (isNaN(date.getTime())) {
+        return "Invalid Date";
+      }
+      const options = { year: 'numeric', month: 'long', day: 'numeric' };
+      return date.toLocaleDateString('ja-JP', options);
     }
 
 
+
+
+
+
+    // メモの一覧を表示する関数
+    function displayMemos() {
+      var memos = JSON.parse(localStorage.getItem('memos')); // メモの記録を取得
+
+      var resultContainer = $('#resultContainer');
+      resultContainer.empty(); // 結果コンテナを初期化
+
+      memos.forEach(function (memo) {
+        var memoItem = $('<p>').text(memo.company + ': ' + memo.memo + ', ' + memo.memo2);
+        resultContainer.append(memoItem);
+      });
+
+      $('#resultContainer').show(); // 結果コンテナを表示する
+
+      $('#resultContainer').empty().text('メモはありません');
+
+    }
+
+    $(document).ready(function () {
+      if (localStorage.getItem('memos')) {
+        displayMemos(); // メモの一覧を表示
+      }
+    });
+
+
+
+
+
+
+
+
+
+
+
+
   </script>
+
 
 </body>
 

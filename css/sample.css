@@ -1,68 +1,146 @@
-body{
-    margin:0;
-    padding:0;
-    text-align:left;
-    font-size: 32px;
-}
-header{
-    background-color: #fff;
-    border-bottom: 1px solid #ccc;
-    text-align: center;
-}
-main{
-    border-bottom:1px solid #ccc;
-    position:relative;
-}
-footer{
-    background-color: #fff;
-    border-bottom:1px solid #ccc;
-    text-align: center;
-}
-p{
-    font-size:200%;
-    text-align: center;
-    border-bottom:1px solid #fff;
-    height:100px;
-}
-ul{
-    padding: 0;
-    border-top: 1px solid #000000;
-    display:table;  /* 定義 */
-    table-layout: fixed;
-    width:100%;
-}
-li{
-    text-align: center;
-    list-style-type:none;
-    border: 1px solid #666;
-    background-color: #FFF;
-    display:table-cell;  /* 定義 */
-    cursor: pointer;
-}
-li:hover{
-    background: #0066CC;
-    color:#fff;
-}
-input,textarea{
-    margin: 3%;
-    width: 95%;
-    font-size:80%;
-    box-shadow: 3px 3px 3px 3px #555;
-}
-input{
-    height: 30px;
-}
-textarea{
-    height: 230px;
+body {
+    background-color:
 }
 
-div{
-  height: 200px;
-  overflow-y: scroll;
-  border: 1px solid #666;
-  margin: 10px;
+.taskin {
+    margin: 10px 0 0 5px;
 }
-div p{
-  font-size: 1.5rem;
-  height: auto;
+
+.deleteButton {
+    padding: 0 0 5px 10px;
+}
+
+.title {
+    text-align: center;
+}
+
+.details,
+.selectstars {
+    padding: 0 0 0 15px;
+
+}
+
+.forinput {
+    background-color: #EEEEEE;
+    padding: 10px 10px 10px 10px;
+    margin: 0 0 20px 0;
+}
+
+.calendar {
+    display: flex;
+}
+
+.taskinput {
+    color: gray;
+    display: inline-block;
+    padding: 8px 16px;
+    margin: 0 0 10px 0;
+    border: 2px solid gray;
+    border-radius: 4px;
+    background-color: #CCCCCC;
+    font-size: 14px;
+    line-height: 1;
+    font-weight: bold;
+}
+
+.taskinput:focus {
+    outline: none;
+    border-color: #5c9eff;
+    background-color: #fff;
+}
+
+.taskinput::placeholder {
+    color: #999;
+}
+
+li {
+    text-align: center;
+    list-style-type: none;
+    border: 1px solid #666;
+
+    display: table-cell;
+    /* 定義 */
+    cursor: pointer;
+}
+
+li:hover {
+    background: #0066CC;
+    color: #fff;
+}
+
+input,
+textarea {
+    margin: 3%;
+    width: 95%;
+    font-size: 80%;
+    box-shadow: 3px 3px 3px 3px #555;
+}
+
+.postit2,
+.postit1,
+#searchInput,
+#resultContainer2plus,
+#datepicker {
+    margin: 3%;
+    width: 95%;
+    font-size: 80%;
+    box-shadow: 3px 3px 3px 3px #555;
+}
+
+
+.datepicker {
+    margin: 3%;
+    width: 95%;
+    font-size: 80%;
+    box-shadow: 3px 3px 3px 3px #555;
+
+}
+
+input {
+    height: 30px;
+}
+
+textarea {
+    height: 230px;
+    margin: 0;
+}
+
+
+
+
+
+
+
+.star:hover,
+.star.selected {
+    color: gold;
+}
+
+ul {
+    margin-top: 650px;
+}
+
+.top {
+    overflow: hidden;
+    border: none;
+}
+
+.contentwrapper {
+    display: flex;
+    margin: auto;
+    justify-content: center;
+}
+
+
+
+.taskdetail2 {
+    padding: 0 0 0 0;
+}
+
+.postit1 {
+    height: 80px;
+}
+
+.allde {
+    margin: 5px 0 5px 0;
 }

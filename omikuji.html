@@ -4,57 +4,36 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>おみくじ</title>
+  <title>NEWS</title>
   <link rel="stylesheet" href="./css/sample.css">
 </head>
 
 <body>
   <header>
-    <h1>おみくじ</h1>
+    <h1>NEWS</h1>
   </header>
 
   <main>
-    <ul>
-      <li id="pull">おみくじを引く</li>
-    </ul>
-    <p id="echo">結果は？</p>
-    <div id="history">
-      <p>履歴が表示されます</p>
+
+    <div style="position: relative; display: inline-block;">
+      <img src="img/news2.jpg" alt="ニュース画像" style="vertical-align: middle; width: 600px;">
+      <div style="position: absolute; top: 0; left: 0; background-color: rgba(0, 0, 0, 0.7); padding: 10px;">
+        <a href="https://newspicks.com/" style="color: white; text-decoration: none;">ニュースピックス</a><br>
+        <a href="https://www.businessinsider.jp/" style="color: white; text-decoration: none;">ビジネスインサイダー</a><br>
+        <a href="https://www.itmedia.co.jp/business/" style="color: white; text-decoration: none;">ITメディア</a><br>
+        <a href="https://www.nikkei.com/" style="color: white; text-decoration: none;">日経</a>
+      </div>
     </div>
+
+
+
+
+
   </main>
 
-  <footer>フッター</footer>
-  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+  <footer></footer>
   <script>
 
-
-    const array = [60, 61, 62, 63];
-    const class01 = {
-      number: 1,
-      title: "HTML",
-      description: "HTMLの役割",
-      time: 90,
-
-    };
-    console.log(class01.title);
-
-
-    const history = [];
-
-    $('#pull').on('click', function () {
-      const omikuji = ['大吉', '中吉', '小吉', '凶', '大凶'];
-      const random = Math.floor(Math.random() * omikuji.length);
-      const result = omikuji[random];
-      $('#echo').text(result);
-      history.unshift(result);
-      console.log(history);
-      const historyElements = [];
-      for (let i = 0; i < history.length; i++) {
-        historyElements.push('<p>' + history[i] + '</p>');
-      }
-      console.log(historyElements);
-      $('#history').html(historyElements);
-    });
 
   </script>
 
