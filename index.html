@@ -17,40 +17,42 @@
       <h1 class="title">タスク管理シート</h1>
 
 
+      <div class="sfw">
+
+        <a href="https://d10000000kvyqea4.lightning.force.com/lightning/page/home" target="_blank"
+          style="text-decoration: none;">
+          <img src="img/sf.png" alt="セールスフォース" width="60" height="100%" style="margin-bottom: 10px;">
+        </a>
+        <a href="https://calendar.google.com/calendar/u/0/r" target="_blank"
+          style="text-decoration: none; margin: 0 0 0 5px;">
+          <img src="img/cal.png" alt="カレンダー" width="60" height="100%">
+        </a>
+
+        <a href="https://mail.google.com/mail/u/0/#inbox" target="_blank" style="text-decoration: none;">
+          <img src="img/gmail.png" alt="ジーメール" width="55" height="100%" style="margin: 0 0 10px 7px;">
+        </a>
+
+        <a href="https://talk.worksmobile.com/#/" target="_blank" style="text-decoration: none;">
+          <img src="img/lw.png" alt="オープン" width="63" height="100%" style="margin: 0 2px 0 9px;">
+        </a>
+
+        <a href="https://openai.com/blog/chatgpt" target="_blank" style="text-decoration: none;">
+          <img src="img/open.png" alt="オープン" width="50" height="100%" style="margin: 0 0 5px 3px;">
+        </a>
 
 
-      <a href="https://d10000000kvyqea4.lightning.force.com/lightning/page/home" target="_blank"
-        style="text-decoration: none;">
-        <img src="img/sf.png" alt="セールスフォース" width="60" height="100%" style="margin-bottom: 10px;">
-      </a>
-      <a href="https://calendar.google.com/calendar/u/0/r" target="_blank"
-        style="text-decoration: none; margin: 0 0 0 5px;">
-        <img src="img/cal.png" alt="カレンダー" width="60" height="100%">
-      </a>
+        <a href="./omikuji.html" target="_blank" target="_blank" style="text-decoration: none;">
+          <img src="img/news.png" alt="ジーメール" width="55" height="100%" style="margin: 0 0 10px 15px;">
+        </a>
 
-      <a href="https://mail.google.com/mail/u/0/#inbox" target="_blank" style="text-decoration: none;">
-        <img src="img/gmail.png" alt="ジーメール" width="55" height="100%" style="margin: 0 0 10px 7px;">
-      </a>
-
-      <a href="https://talk.worksmobile.com/#/" target="_blank" style="text-decoration: none;">
-        <img src="img/lw.png" alt="オープン" width="63" height="100%" style="margin: 0 2px 0 9px;">
-      </a>
-
-      <a href="https://openai.com/blog/chatgpt" target="_blank" style="text-decoration: none;">
-        <img src="img/open.png" alt="オープン" width="50" height="100%" style="margin: 0 0 5px 3px;">
-      </a>
-
-
-      <a href="./omikuji.html" target="_blank" target="_blank" style="text-decoration: none;">
-        <img src="img/news.png" alt="ジーメール" width="55" height="100%" style="margin: 0 0 10px 15px;">
-      </a>
-
-      <a href="https://github.com/Mikiyosh/Wine_list" target="_blank" style="text-decoration: none;">
-        <img src="img/gh.png" alt="ギット" width="55" height="100%" style="margin: 0 0 3px 15px;">
-      </a>
-
-
-
+        <a href="https://github.com/Mikiyosh/Wine_list" target="_blank" style="text-decoration: none;">
+          <img src="img/gh.png" alt="ギット" width="55" height="100%" style="margin: 0 0 3px 15px;">
+        </a>
+        <div class="timerw">
+          <input type="time" id="alarmTime" style="width: 120px; margin: 5px 10px 50px 9px;">
+          <button id="alarmButton">アラームON</button>
+        </div>
+      </div>
 
       <div class="headermain">
         <div class="forinput">
@@ -198,6 +200,31 @@
   <script src="https://code.jquery.com/ui/1.13.0/jquery-ui.min.js"></script>
 
   <script>
+
+    const alarmButton = document.getElementById("alarmButton");
+
+    function setAlarm() {
+      const alarmTime = document.getElementById("alarmTime").value;
+      const [hours, minutes] = alarmTime.split(":");
+
+      const now = new Date();
+      const alarm = new Date();
+      alarm.setHours(hours);
+      alarm.setMinutes(minutes);
+      alarm.setSeconds(0);
+
+      const timeDiff = alarm - now;
+
+      if (timeDiff > 0) {
+        setTimeout(function () {
+          alert("アラームです！");
+        }, timeDiff);
+      } else {
+        alert("無効な時刻です。");
+      }
+    }
+
+    alarmButton.addEventListener("click", setAlarm);
 
 
     // メモデータを保持する配列
